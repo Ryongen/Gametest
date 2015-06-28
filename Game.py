@@ -2,12 +2,16 @@
 import random
 
 # stats
-personaje = [1, 100, 0, "nada"]
+personaje = [1, 100, 0, "nada", 100] #Level.Vida.Mana.Clase.Dinero
 inventario = []
 aventura = []
 direccion = 0
 mapa = 100
-historial = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20] #El numero total de mapas por ahora (aunque es un apaño ya explicare porque)
+historial = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] #El numero total de mapas por ahora (aunque es un apaño ya explicare porque)
+
+#Objetos
+Mandoble = ["Mandoble", 100, 50, 2] #Nombre.Dinero.ATK.Velocidad
+
 # Funciones
 
 # Eleccion de clase
@@ -75,60 +79,95 @@ def aventure(mapa):
 # Mapas
 
 def Mapas(mapa, historial):
-    print("\n Has llegado a: ")
     if mapa == 1:
+        print("\n Has llegado a: ")
         print("un Lago")
-        historial.remove(1) #Quita el mapa 1 de la seleccion de mapas que pueden salir
+        historial[0] = 0 #Quita el mapa 1 de la seleccion de mapas que pueden salir
         mapa = random.randint(historial[0], historial[9]) #Hace un roll (random) entre la posicion 1 del historial y la 10 
         return (mapa) #Devuelve el valor mapa y acaba la funcion 
     elif mapa == 2:
+        print("\n Has llegado a: ")
         print("un Bosque")
-        historial.remove(2)
+        historial[1] = 0
         mapa = random.randint(historial[0], historial[9])
         return (mapa)
     elif mapa == 3:
+        print("\n Has llegado a: ")
         print("un pepe")
-        historial.remove(3)
+        historial[2] = 0
         mapa = random.randint(historial[0], historial[9])
         return (mapa)
     elif mapa == 4:
+        print("\n Has llegado a: ")
         print("una planicia")
-        historial.remove(4)
+        historial[3] = 0
         mapa = random.randint(historial[0], historial[9])
         return (mapa)
     elif mapa == 5:
+        print("\n Has llegado a: ")
         print("una montaña")
-        historial.remove(5)
+        historial[4] = 0
         mapa = random.randint(historial[0], historial[9])
         return (mapa)
     elif mapa == 6:
+        print("\n Has llegado a: ")
         print("un rio")
-        historial.remove(6)
+        historial[5] = 0
         mapa = random.randint(historial[0], historial[9])
         return (mapa)
     elif mapa == 7:
+        print("\n Has llegado a: ")
         print("una casa abandonada")
-        historial.remove(7)
+        historial[6] = 0
         mapa = random.randint(historial[0], historial[9])
         return (mapa)
     elif mapa == 8:
+        print("\n Has llegado a: ")
         print("una playa")
-        historial.remove(8)
+        historial[7] = 0
         mapa = random.randint(historial[0], historial[9])
         return (mapa)
     elif mapa == 9:
+        print("\n Has llegado a: ")
         print("unas ruinas")
-        historial.remove(9)
+        historial[8] = 0
         mapa = random.randint(historial[0], historial[9])
         return (mapa)
     elif mapa == 10:
+        print("\n Has llegado a: ")
         print("la ciudad")
-        historial.remove(10)
+        historial[9] = 0
         mapa = random.randint(historial[0], historial[9])
         return (mapa)
+    else:
+        mapa = random.randint(historial[0], historial[9])
+        return Mapas(mapa, historial)
 
-    
+def ciudad():  #Una funcion para la ciudad me parece la mejor idea
+    print("Que deseas hacer en la ciudad:")
+    print("\n 1.- Ir a la tienda")
+    print("\n 2.- Ir a tu casa")
+    print("\n 3.- etc")
+    choicec = input("Elijo:")
+    if choicec == 1:
+            tienda()
+            pass
 
+    pass
+
+def tienda(): #otra para la tienda y mantenerlo separado
+    print("Que desea?")
+    print("\n 1.- Comprar")
+    print("\n 2.- Vender")
+    print("\n 0.- Salir")
+    choicet = input()
+    while choicet != 0:
+        if choicet == 1:
+
+
+            pass
+        pass
+    pass
 
 # Juego
 
@@ -150,10 +189,21 @@ mapa = aventure(mapa) # para que la variable Mapa sea el desenlace de la funcion
 
 print("Te quedan por visitar: ", historial)
 print(" mapa elegido:", mapa)
-mapa = Mapas(mapa, historial) # Otra vez para que la variable mapa ahora sea el desenlace de la funcion mapas
 
-print("Te quedan por visitar: ", historial)
-print(" mapa elegido:", mapa)
+while mapa != 10: #Mientras que el valor de mapa no sea 10 repetira lo que haya entre el while y el pass en este caso buscara mapa tras mapa hasta que llegue al 10 que es la ciudad
+    
+
+    mapa = Mapas(mapa, historial) # Otra vez para que la variable mapa ahora sea el desenlace de la funcion mapas
+
+    print("Te quedan por visitar: ", historial)
+    print(" mapa elegido:", mapa)
+
+    pass
+
+ciudad()
+
+
+
 
 # a = random.randint(1, 10)
 # print(a)
